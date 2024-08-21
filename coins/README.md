@@ -40,7 +40,7 @@ This project includes a `docker-compose.yaml` file to simplify the setup and dep
     - **Start Kafka**:
 
         ```bash
-        docker compose start kafka
+        docker compose start course-kafka
         ```
 
     - **Start Kafdrop**:
@@ -55,10 +55,10 @@ This project includes a `docker-compose.yaml` file to simplify the setup and dep
         docker compose start postgres
         ```
 
-    - **Start Dev-Env**:
+    - **Start dev_env**:
 
         ```bash
-        docker compose start dev-env
+        docker compose start dev_env
         ```
 
     - **Start Elasticsearch**:
@@ -86,8 +86,13 @@ This project includes a `docker-compose.yaml` file to simplify the setup and dep
 5. **Access the Services**:
 
     Depending on the services defined in your `docker-compose.yaml`, you can now access them via their respective ports. For example:
-    - If you have a web application, you can visit `http://localhost:PORT` in your browser.
-    - If you have a database service, you can connect to it using the defined ports in your `docker-compose.yaml`.
+    - If you have a web application, you can visit `http://localhost:PORT` in your browser, for example:
+    - kafdrop >> localhost:9003
+    - kibana >> localhost:5601
+    - airflow >> localhost:8082
+    - If you have a database service, you can connect to it using the DBeaver ports in your `docker-compose.yaml`:
+    -     postgres:5432
+    -     mariadb:3306
 
 6. **Shut Down the Containers**:
 
@@ -104,6 +109,7 @@ If you need to customize the configuration, you can modify the `docker-compose.y
 ```bash
 docker compose down
 docker compose create
+```
 
 Before starting the `coin_project`, make sure to follow these steps:
 
