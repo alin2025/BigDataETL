@@ -31,16 +31,16 @@ This repository leverages a variety of big data tools and technologies, includin
 - **Kibana**: A visualization tool that works with Elasticsearch to explore, visualize, and share insights from data.
 
 ## Project Structure example
-- ***BigDAtaETL**
-- ***Coins project:**
-- ***README.md**
-- ***src**
-- ***data**
+BigDAtaETL
+- **Coins project:**
+- **README.md**
+- **src**
+- **data**
 
 Gett project:
-README.md
-src
-data
+- **README.md**
+- **src**
+- **data**
 
 Each project in this repository is organized into separate directories. 
 Each directory contains all the necessary files, including scripts, configuration files, and documentation.
