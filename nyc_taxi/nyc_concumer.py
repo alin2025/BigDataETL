@@ -30,10 +30,3 @@ for message in consumer:
 print("Finished consuming messages and indexing to Elasticsearch.")
 
 
-# from elasticsearch import Elasticsearch
-
-# es = Elasticsearch(
-#     [{'host': 'localhost', 'port': 9200, 'scheme': 'http'}],
-#     # Explicitly set the API version
-#     api_version=(7, 13, 2)
-# )
