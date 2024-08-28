@@ -1,5 +1,5 @@
 from kafka import KafkaConsumer
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch # type: ignore
 import json
 
 #pip install elasticsearch

@@ -1,4 +1,4 @@
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch # type: ignore
 
 # Connect to Elasticsearch
 es = Elasticsearch([{'host': 'elasticsearch', 'port': 9200, 'scheme': 'http'}])
