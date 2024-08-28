@@ -44,7 +44,7 @@ for bucket in response['aggregations']['avg_fare_by_payment_type']['buckets']:
 
 
 
-#for dev_tool
+#for dev_tool query
 # POST /nyctaxi/_search
 # {
 #   "size": 0,
