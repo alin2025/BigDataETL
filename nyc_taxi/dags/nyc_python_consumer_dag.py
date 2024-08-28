@@ -16,7 +16,7 @@ default_args = {
 with DAG('produce_nyctaxi_to_kafka', default_args=default_args, schedule_interval=None, catchup=False) as dag:
 
     get_last_cut_date = SSHOperator(
-        task_id='run_python_producer',
+        task_id='run_python_consumer',
         ssh_conn_id='ssh_default',  #SSH connection in Airflow
         command='/bin/python3 /home/developer/projects/spark-course-python/BigDataETL/nyc_taxi/dags/nyc_python_consumer_dag.py'
 
