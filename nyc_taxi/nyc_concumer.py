@@ -3,12 +3,14 @@ from elasticsearch import Elasticsearch
 import json
 
 #pip install elasticsearch
+#pip install --upgrade elasticsearch==7.13.2
+
 # Kafka configuration
 kafka_topic = 'my_trip'
 kafka_bootstrap_servers = ['course-kafka:9092']
 
 # Elasticsearch configuration
-es = Elasticsearch([{'host': 'elasticksearch', 'port': 9200, 'scheme': 'http'}])
+es = Elasticsearch([{'host': 'elasticsearch', 'port': 9200, 'scheme': 'http'}])
 es_index = 'nyctaxi'
 
 # Create a Kafka consumer
@@ -26,3 +28,12 @@ for message in consumer:
     es.index(index=es_index, body=document)
 
 print("Finished consuming messages and indexing to Elasticsearch.")
+
+
+# from elasticsearch import Elasticsearch
+
+# es = Elasticsearch(
+#     [{'host': 'localhost', 'port': 9200, 'scheme': 'http'}],
+#     # Explicitly set the API version
+#     api_version=(7, 13, 2)
+# )
