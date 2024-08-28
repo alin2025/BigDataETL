@@ -26,3 +26,14 @@ for bucket in response['aggregations']['trips_by_vendor']['buckets']:
     print(f"Vendor ID: {bucket['key']}, Total Trips: {bucket['doc_count']}")
 
 
+# POST /nyctaxi/_search
+# {
+#     "size": 0, 
+#     "aggs": {
+#         "trips_by_vendor": {
+#             "terms": {
+#                 "field": "vendorid.keyword"  
+#             }
+#         }
+#     }
+# }
