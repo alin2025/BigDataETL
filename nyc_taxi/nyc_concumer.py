@@ -18,6 +18,7 @@ consumer = KafkaConsumer(
     kafka_topic,
     bootstrap_servers=kafka_bootstrap_servers,
     auto_offset_reset='earliest',
+    group_id="taxi_consumer",
     enable_auto_commit=True,
     value_deserializer=lambda x: json.loads(x.decode('utf-8'))
 )
