@@ -3,7 +3,7 @@ from kafka import KafkaProducer
 from time import sleep
 
 # Topics/Brokers
-topic= 'kafka-tst-07'
+topic2 = 'kafka-tst-02'
 brokers = "course-kafka:9092"
 
 
