@@ -1,7 +1,7 @@
 
 from kafka import KafkaConsumer
 from datetime import datetime
-#examplea
+
 # In this example we will illustrate a simple producer-consumer integration
 topic3 = 'kafka-tst-07'
 brokers = "course-kafka:9092"
