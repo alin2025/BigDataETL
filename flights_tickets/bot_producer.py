@@ -1,6 +1,6 @@
 ###TELEGRAM#### -
 ### BOT NAME - benji ###
-respj3 = ''
+# respj3 = ''
 TOKEN = "7272653215:AAEJENjwCMddUfg10UKVNBFmKZLdood7_gE"
 import datetime
 from datetime import date
@@ -145,7 +145,7 @@ def amadeus(request_type, origin_city, dep_date, dest_city='NYC', return_date='2
 url = "https://test.api.amadeus.com/v1/security/oauth2/token"
 headers = CaseInsensitiveDict()
 headers["Content-Type"] = "application/x-www-form-urlencoded"
-data = "grant_type=client_credentials&client_id=BWIrcITj9KYJjfTlOkAm1JlbIVrq5J7x&client_secret=isYP4LShJ10H4Ry5"
+data = "grant_type=client_credentials&client_id=111BWIrcITj9KYJjfTlOkAm1JlbIVrq5J7x111&client_secret=isYP4LShJ10H4Ry5111"
 resp = requests.post(url, headers=headers, data=data)
 respj = resp.json()
 token = respj['access_token']
