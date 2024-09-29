@@ -11,6 +11,7 @@ spark = SparkSession \
     .builder \
     .master("local[*]") \
     .appName('ROUTES_TO_S3') \
+    .config('spark.jars', '/opt/drivers/postgresql-42.5.6.jar') \
     .config('spark.jars.packages', 'org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2') \
     .getOrCreate()
 
@@ -82,22 +83,43 @@ taxiTripsDF = taxiTripsDF\
 # taxiTripsDF.show(8,False)
 
 
+taxiTripsDF.printSchema()
 
 
-taxiTripsDF = taxiTripsDF\
-    .writeStream\
-            .format("console")\
-            .outputMode("append")\
-            .start()\
-            .awaitTermination()
 
-
-# s3_query = taxiTripsDF\
+# hdfs_query = taxiTripsDF\
 #     .writeStream\
-#             .format("console")\
-#             .outputMode("append")\
-#             .start()\
-#             .awaitTermination()
+#     .format("parquet")\
+#     .partitionBy("vendorid")\
+#     .option("path",'s3a://nyc/data/')\
+#     .option("checkpointLocation", 's3a://nyc/checkpoints/taxi/log')\
+#     .outputMode("append")\
+#     .start()
 
+# PostgreSQL connection properties
+postgres_url = "jdbc:postgresql://postgres:5432/postgres"  
+postgres_properties = {
+    "user": "postgres",    
+    "password": "postgres",
+    "driver": "org.postgresql.Driver"
+}
 
+# Define the function to handle each micro-batch of the streaming data
+def write_to_postgres(batch_df, batch_id):
+    # Write each batch of data to PostgreSQL
+    batch_df.write \
+        .jdbc(
+            url=postgres_url,
+            table="taxi_trips",  # Target table name
+            mode="append",       # Use 'append' to add data without overwriting
+            properties=postgres_properties
+        )
 
+# Stream the DataFrame and write to PostgreSQL using the foreachBatch function
+streaming_query = taxiTripsDF.writeStream \
+    .foreachBatch(write_to_postgres) \
+    .outputMode("append") \
+    .start()
+
+# Wait for the termination of the streaming query
+streaming_query.awaitTermination()
