@@ -57,7 +57,7 @@ def send_to_s3(df):
 )
 
     #### Uploading JSON File To S3 Bucket By Date Partition ####
-    s3.put_object(Bucket='my-amadeus',  Body=(bytes(json.dumps(json_object).encode('UTF-8'))), Key=f'request/{current_date}/{current_timestamp}.json')
+    s3.put_object(Bucket='amadeus',  Body=(bytes(json.dumps(json_object).encode('UTF-8'))), Key=f'request/{current_date}/{current_timestamp}.json')
 
 
 
@@ -140,6 +140,8 @@ headers = CaseInsensitiveDict()
 headers["Content-Type"] = "application/x-www-form-urlencoded"
 data = "grant_type=client_credentials&client_id=BWIrcITj9KYJjfTlOkAm1JlbIVrq5J7x&client_secret=isYP4LShJ10H4Ry5"
 resp = requests.post(url, headers=headers, data=data)
+
+
 respj = resp.json()
 token = respj['access_token']
 print("Amadeus Token: ",token)

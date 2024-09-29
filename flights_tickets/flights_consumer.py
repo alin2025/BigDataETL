@@ -6,7 +6,7 @@ from pyspark.sql import SparkSession
 
 ### Creating a Conection Between Spark And Kafka ####
 topic = 'amadeus'
-bootstrapServers = ['course-kafka:9092']
+bootstrapServers = 'course-kafka:9092'
 ####  Creating Spark Session ####
 spark = SparkSession\
     .builder\
@@ -54,7 +54,7 @@ df_kafka= df_kafka.withColumn("is_active", lit(1))
 #### Defining A Function To Send Dataframe To MongoDB ####
 def write_df_mongo(target_df):
 
-    mogodb_client = pymongo.MongoClient('mongodb://localhost:27017/')
+    mogodb_client = pymongo.MongoClient('mongodb://mongo:27017/')
     mydb = mogodb_client["Amadeus_DB"]
     mycol = mydb["Flights_Requests"]
     post = {
