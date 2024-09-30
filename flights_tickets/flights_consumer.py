@@ -89,4 +89,4 @@ df_kafka \
     .outputMode("append") \
     .start() \
     .awaitTermination()
-df_kafka.show(truncate=False)
+# df_kafka.show(truncate=False)

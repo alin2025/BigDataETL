@@ -35,7 +35,7 @@ streaming_df = spark.readStream \
     .option('startingOffsets', 'latest') \
     .load()\
     .select(F.col('value').cast(T.StringType()))
-    
+
 
 parsed_df = streaming_df.withColumn('parsed_json', F.from_json(F.col('value'), enriched_event_schema))\
                     .select(F.col('parsed_json.*'))
