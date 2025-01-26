@@ -34,7 +34,7 @@ def amadeus_check_price(origin_city, dest_city, dep_date, return_date):
   url = "https://test.api.amadeus.com/v1/security/oauth2/token"
   headers = CaseInsensitiveDict()
   headers["Content-Type"] = "application/x-www-form-urlencoded"
-  data = "grant_type=client_credentials&client_id=BWIrcITj9KYJjfTlOkAm1JlbIVrq5J7x&client_secret=isYP4LShJ10H4Ry5"
+  data = "grant_type=client_credentials&client_id=777BWIrcITj9KYJjfTlOkAm1JlbIVrq5J7x&client_secret=777isYP4LShJ10H4Ry5"
   resp = requests.post(url, headers=headers, data=data)
   
   respj = resp.json()
